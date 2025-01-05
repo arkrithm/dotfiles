@@ -6,7 +6,9 @@
 #
 # - `sheldon add` to add a new plugin to the config file
 # - `sheldon edit` to open up the config file in the default editor
+
 # - `sheldon remove` to remove a plugin from the config file
+
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
@@ -14,8 +16,10 @@ shell = "zsh"
 
 [plugins]
 
+
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
