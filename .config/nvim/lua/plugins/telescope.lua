@@ -35,7 +35,7 @@ telescope.setup({
 		file_browser = {
 			theme = "ivy",
 			hijack_netrw = true,
-            hidden = { file_browser = true, folder_browser = true },
+			hidden = { file_browser = true, folder_browser = true },
 			mappings = {
 				["i"] = {},
 				["n"] = {},
