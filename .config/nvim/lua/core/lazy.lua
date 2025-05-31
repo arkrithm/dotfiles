@@ -12,9 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- ---------------
-    -- PLUGINS
-    -- ---------------
+	-- ---------------
+	-- PLUGINS
+	-- ---------------
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	{
 		"olimorris/onedarkpro.nvim",
@@ -60,9 +60,9 @@ require("lazy").setup({
 		lazy = false,
 	},
 
-    -- ---------------
-    -- LSP
-    -- ---------------
+	-- ---------------
+	-- LSP
+	-- ---------------
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
