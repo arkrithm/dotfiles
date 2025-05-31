@@ -12,6 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    -- ---------------
+    -- PLUGINS
+    -- ---------------
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"olimorris/onedarkpro.nvim",
+		priority = 1000, -- Ensure it loads first
+	},
+	{ "echasnovski/mini.comment", version = "*" },
+	{ "echasnovski/mini.pairs", version = "*" },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -19,56 +29,49 @@ require("lazy").setup({
 			-- add any options here
 		},
 		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
 	},
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{
-		"olimorris/onedarkpro.nvim",
-		priority = 1000, -- Ensure it loads first
-	},
-	{ "echasnovski/mini.pairs", version = false },
-	{ "echasnovski/mini.comment", version = false },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
-		"smoka7/hop.nvim",
-		event = "BufRead",
-		version = "*",
-		opts = {
-			multi_windows = true,
-		},
-		keys = {
-			{ "<leader><leader>", "<cmd>HopWord<CR>", mode = "n", desc = "Hop Word" },
-		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-file-browser.nvim",
 		},
 	},
 	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
+
+    -- ---------------
+    -- LSP
+    -- ---------------
+	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
-		config = function()
-			-- プラグイン読み込み後に mason の設定ファイルを呼び出す
-			require("lsp.mason")
-		end,
 	},
 
 	-- mason-lspconfig + nvim-lspconfig
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
-		config = function()
-			require("lsp.lsp_config")
-		end,
 	},
 
 	-- nvim-cmp (補完プラグイン本体)
@@ -79,16 +82,5 @@ require("lazy").setup({
 			"hrsh7th/cmp-path", -- ファイルパス補完ソース
 			-- "hrsh7th/vim-vsnip",  -- スニペットを使う場合はこれ等も必要
 		},
-		config = function()
-			require("lsp.cmp")
-		end,
 	},
-	{
-		"github/copilot.vim",
-		lazy = false,
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-	},
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 })

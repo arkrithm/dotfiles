@@ -31,24 +31,10 @@ telescope.setup({
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 	},
-	extensions = {
-		file_browser = {
-			theme = "ivy",
-			hijack_netrw = true,
-			hidden = { file_browser = true, folder_browser = true },
-			mappings = {
-				["i"] = {},
-				["n"] = {},
-			},
-		},
-	},
 })
-
-telescope.load_extension("file_browser")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>fv", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
-vim.keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", { desc = "Telescope-file-browser" })
