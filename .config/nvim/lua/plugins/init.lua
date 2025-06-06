@@ -1,8 +1,0 @@
-require("plugins.treesitter")
-require("plugins.onedark")
-require("plugins.comment")
-require("plugins.pairs")
-require("plugins.noice")
-require("plugins.lualine")
-require("plugins.telescope")
-require("plugins.oil")
