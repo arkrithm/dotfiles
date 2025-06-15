@@ -25,4 +25,5 @@ alias lt=et
 alias lta=eta
 alias l="clear && ls"
 
+# bat
 alias cat="bat"
