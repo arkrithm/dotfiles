@@ -1,0 +1,10 @@
+# starship
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# sheldon
+eval "$(sheldon source)"
+
+# mise
+. "$HOME/.local/bin/env"
+eval "$(/Users/arkrithm/.local/bin/mise activate zsh)"
